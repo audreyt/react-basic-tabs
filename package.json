@@ -1,0 +1,55 @@
+{
+  "name": "react-tab-panel",
+  "version": "0.0.9",
+  "description": "React TabPanel",
+  "main": "lib/index.js",
+  "dependencies": {
+    "copy-utils": "^1.0.0",
+    "normalize.css": "^3.0.2",
+    "react": "^0.12.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.9.0",
+    "extract-text-webpack-plugin": "^0.3.4",
+    "file-loader": "^0.8.1",
+    "gulp": "^3.8.10",
+    "gulp-react": "^2.0.0",
+    "http-server": "^0.7.3",
+    "json-loader": "^0.5.1",
+    "jsx-loader": "^0.12.1",
+    "style-loader": "^0.8.2",
+    "stylus-loader": "^0.4.0",
+    "url-loader": "^0.5.5",
+    "webpack": "^1.4.13",
+    "webpack-dev-server": "^1.6.5"
+  },
+  "scripts": {
+    "test": "make",
+    "lib": "gulp",
+    "dist": "./node_modules/.bin/webpack --progress --colors --config dist.config.js",
+    "dist.min": "webpack --progress --colors --optimize-minimize --optimize-occurence-order --optimize-dedupe --config dist.min.config.js",
+    "build": "npm run dist && npm run dist.min && npm run lib",
+    "serve": "./node_modules/.bin/http-server -p 9091",
+    "dev": "./node_modules/.bin/webpack-dev-server --progress --colors --port 9090 --content-base http://localhost:9091"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/radubrehar/react-tab-panel"
+  },
+  "keywords": [
+    "react",
+    "tabs",
+    "tab-panel",
+    "tab",
+    "panel",
+    "react-component",
+    "tabpanel",
+    "tabbed"
+  ],
+  "author": "Radu Brehar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radubrehar/react-tab-panel/issues"
+  },
+  "homepage": "https://github.com/radubrehar/react-tab-panel"
+}
