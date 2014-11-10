@@ -1,7 +1,7 @@
 
 'use strict';
 
-var React = require('react')
+var React    = require('react')
 var TabPanel = require('./src')
 
 var App = React.createClass({
