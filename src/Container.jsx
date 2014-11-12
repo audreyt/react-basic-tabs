@@ -5,11 +5,15 @@ var copy  = require('copy-utils').copy
 
 module.exports = React.createClass({
 
+    displayName: 'TabPanel.Container',
+
     propTypes: {
         activeIndex     : React.PropTypes.number,
 
         defaultClassName: React.PropTypes.string,
         defaultStyle    : React.PropTypes.object,
+
+        hiddenStyle     : React.PropTypes.object,
 
         activeClassName : React.PropTypes.string,
         activeStyle     : React.PropTypes.object
@@ -17,7 +21,10 @@ module.exports = React.createClass({
 
     getDefaultProps: function(){
         return {
-            activeIndex: 0
+            activeIndex: 0,
+            hiddenStyle: {
+                display: 'none'
+            }
         }
     },
 
@@ -32,6 +39,8 @@ module.exports = React.createClass({
 
     renderItem: function(item, index, array){
         var props = this.props
+
+        var hiddenStyle = props.hiddenStyle
         var activeIndex = props.activeIndex || 0
 
         //make sure the wrapping article gets the correct style
@@ -40,7 +49,7 @@ module.exports = React.createClass({
         var className = 'tab-panel-item '
 
         if (index !== activeIndex){
-            style.display = 'none'
+            copy(hiddenStyle, style)
         } else {
             copy(props.activeStyle, style)
             className += props.activeClassName || ''

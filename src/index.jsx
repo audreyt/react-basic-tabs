@@ -1,7 +1,8 @@
 'use strict';
 
-var React = require('react')
-var Strip = require('./Strip')
+var React     = require('react')
+
+var Strip     = require('./Strip')
 var Container = require('./Container')
 
 function emptyFn(){}
@@ -22,7 +23,9 @@ var TabPanel = React.createClass({
         activeTitleStyle    : React.PropTypes.object,
         activeTitleClassName: React.PropTypes.string,
 
-        onChange            : React.PropTypes.func
+        onChange            : React.PropTypes.func,
+
+        stripListStyle      : React.PropTypes.object
     },
 
     getDefaultProps: function(){
@@ -51,13 +54,22 @@ var TabPanel = React.createClass({
 
         var props = this.props
 
+        props.children = props.children || []
+
         var activeIndex = props.activeIndex || 0
 
         activeIndex = Math.min(activeIndex, props.children.length - 1)
 
-        return (
-            <div className={'tab-panel ' + (this.props.className || '')}>
-                <Strip onChange={this.handleChange}
+        props.className = props.className || ''
+
+        props.className += ' tab-panel'
+
+        var StripComponent = <Strip key="strip" onChange={this.handleChange}
+
+                    enableScroll    ={props.enableScroll}
+                    scrollerStyle   ={props.scrollerStyle}
+                    scrollerFactory ={props.scrollerFactory}
+                    scrollerWidth   ={props.scrollerWidth}
 
                     activeIndex={activeIndex}
 
@@ -66,21 +78,34 @@ var TabPanel = React.createClass({
 
                     titleStyle={props.titleStyle}
                     titleClassName={props.titleClassName}
+
+                    style={props.stripStyle}
                 >
                     {props.children}
                 </Strip>
 
-                <Container
+        var ContainerComponent = <Container key="container"
                     activeIndex={activeIndex}
 
                     activeClassName={props.activeClassName}
                     activeStyle={props.activeStyle}
 
                     defaultStyle={props.defaultStyle}
-                    defaultClassName={props.defaultClassName}>
+                    defaultClassName={props.defaultClassName}
+
+                    hiddenStyle={props.hiddenStyle}>
 
                     {this.props.children}
                 </Container>
+
+
+        var Content = props.stripPosition == 'bottom'?
+                            [ContainerComponent, StripComponent]:
+                            [StripComponent, ContainerComponent]
+
+        return (
+            <div {...props} >
+                {Content}
             </div>
         )
     },

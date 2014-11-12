@@ -19,14 +19,26 @@ var App = React.createClass({
 
     render: function() {
         return <TabPanel
+            enableScroll={true}
+            scrollerStyle={{background: 'gray'}}
+            style={{width: '100%', border: '1px solid blue'}}
             activeIndex={this.state.activeIndex}
             onChange={this.handleChange}
-            titleStyle={{padding: 10}}
+            titleStyle={{padding: 10, border: '1px solid red'}}
             defaultStyle={{padding: 10}}
+            stripStyle={{
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap'
+            }}
         >
-            <div tabTitle="x" title="One">first</div>
+            <div title="One">first</div>
             <div title="Two">second</div>
             <div title="Three">third</div>
+            <div title="Four">four</div>
+            <div title="Five">five</div>
+            <div title="Six">six</div>
+            <div title="Seven">sevenup</div>
         </TabPanel>
     }
 })

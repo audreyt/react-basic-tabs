@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "copy-utils": "^1.0.0",
+    "functionally": "^0.6.2",
     "react": "^0.12.0"
   },
   "devDependencies": {
