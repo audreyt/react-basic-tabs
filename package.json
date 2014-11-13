@@ -1,6 +1,6 @@
 {
   "name": "react-basic-tabs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Basic TabPanel",
   "main": "lib/index.js",
   "dependencies": {
@@ -17,13 +17,13 @@
     "webpack-dev-server": "^1.6.5"
   },
   "scripts": {
-    "test"    : "make",
-    "lib"     : "gulp",
-    "dist"    : "./node_modules/.bin/webpack --progress --colors --config dist.config.js",
+    "test": "make",
+    "lib": "gulp",
+    "dist": "./node_modules/.bin/webpack --progress --colors --config dist.config.js",
     "dist.min": "webpack --progress --colors --optimize-minimize --optimize-occurence-order --optimize-dedupe --config dist.min.config.js",
-    "build"   : "npm run dist && npm run dist.min && npm run lib",
-    "serve"   : "./node_modules/.bin/http-server -p 9091",
-    "dev"     : "./node_modules/.bin/webpack-dev-server --progress --colors --port 9090 --content-base http://localhost:9091"
+    "build": "npm run dist && npm run dist.min && npm run lib",
+    "serve": "./node_modules/.bin/http-server -p 9091",
+    "dev": "./node_modules/.bin/webpack-dev-server --progress --colors --port 9090 --content-base http://localhost:9091"
   },
   "repository": {
     "type": "git",
