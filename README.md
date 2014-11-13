@@ -1,6 +1,6 @@
-# react-tab-panel
+# react-basic-tabs
 
-> React Tab Panel
+> React Basic TabPanel
 
 This component is a very simple yet powerful tab panel. You only have to require it (there are no css files involved).
 
@@ -9,14 +9,14 @@ For flexibility it leaves styling up to the end-user. (It does render html with 
 ## Install
 
 ```sh
-$ npm install react-tab-panel
+$ npm install react-basic-tabs
 ```
 
 ## Usage
 
 ```jsx
 var React    = require('react')
-var TabPanel = require('react-tab-panel')
+var TabPanel = require('react-basic-tabs')
 
 var App = React.createClass({
 
@@ -66,10 +66,10 @@ For tab titles, the children of the TabPanel are expected to have have either a 
 
 For styling, the following classes are present in the rendered html:
 
- * 'tab-panel' - className for the React component.
- * 'tab-panel-strip' - the nav element containing the tab titles
- * 'tab-panel-item-title' - a **li** with the title of each tab
- * 'tab-panel-item-title.active' - the active version of the above
- * 'tab-panel-container' - the body of the tab panel
- * 'tab-panel-item' - html **article** tags inside the .tab-panel-container. Those hold the actual children of the tab panel
- * 'tab-panel-item.active' - the active version of the above
+ * 'basic-tabs' - className for the React component.
+ * 'basic-tabs-strip' - the nav element containing the tab titles
+ * 'basic-tabs-item-title' - a **li** with the title of each tab
+ * 'basic-tabs-item-title.active' - the active version of the above
+ * 'basic-tabs-container' - the body of the tab panel
+ * 'basic-tabs-item' - html **article** tags inside the .basic-tabs-container. Those hold the actual children of the tab panel
+ * 'basic-tabs-item.active' - the active version of the above

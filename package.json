@@ -1,7 +1,7 @@
 {
-  "name": "react-tab-panel",
-  "version": "0.0.9",
-  "description": "React TabPanel",
+  "name": "react-basic-tabs",
+  "version": "0.1.0",
+  "description": "React Basic TabPanel",
   "main": "lib/index.js",
   "dependencies": {
     "copy-utils": "^1.0.0",

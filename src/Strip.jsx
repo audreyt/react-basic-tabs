@@ -44,7 +44,7 @@ var Scroller = React.createClass({
         var side  = this.props.side
 
         props.className = props.className || ''
-        props.className += ' tab-panel-scroller ' + side
+        props.className += ' basic-tabs-scroller ' + side
 
         if (props.active && props.visible){
             props.className += ' active'
@@ -280,7 +280,7 @@ module.exports = React.createClass({
         var baseStyle = copy(LIST_ITEM_STYLE)
         copy(props.titleStyle, baseStyle)
 
-        var baseClassName = [props.titleClassName || '', 'tab-panel-item-title']
+        var baseClassName = [props.titleClassName || '', 'basic-tabs-item-title']
 
         var nodes = props.children.map(function(child, index){
             var props = child.props
@@ -309,7 +309,7 @@ module.exports = React.createClass({
         }, this)
 
         props.className = props.className || ''
-        props.className += ' tab-panel-strip'
+        props.className += ' basic-tabs-strip'
 
         props.style = props.style || {}
         props.style.position = 'relative'
