@@ -1,1 +1,1 @@
-module.exports = 'react-tab-panel'
+module.exports = 'react-basic-tabs'
