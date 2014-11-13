@@ -4,6 +4,11 @@ var React  = require('react')
 var copy   = require('copy-utils').copy
 var buffer = require('functionally').buffer
 
+function stop(event){
+    event.preventDefault()
+    event.stopPropagation()
+}
+
 var LIST_ITEM_STYLE = {
     display: 'inline-block'
 }
@@ -36,7 +41,7 @@ var Scroller = React.createClass({
 
     render: function(){
         var props = this.props
-        var side = this.props.side
+        var side  = this.props.side
 
         props.className = props.className || ''
         props.className += ' tab-panel-scroller ' + side
@@ -46,9 +51,9 @@ var Scroller = React.createClass({
         }
 
         var scrollerStyle = copy(SCROLLER_STYLE)
-        scrollerStyle.width = props.width
 
         props.style = copy(props.style, scrollerStyle)
+        props.style.width = props.width
 
         props.style[side] = 0
 
@@ -57,7 +62,7 @@ var Scroller = React.createClass({
         }
 
         return props.factory?
-                    props.factory(props):
+                    props.factory(props, side):
                     <div {...props}/>
     }
 })
@@ -78,6 +83,7 @@ module.exports = React.createClass({
 
         anchorStyle   : React.PropTypes.object,
         scrollerStyle : React.PropTypes.object,
+        scrollerProps : React.PropTypes.object,
         scrollerWidth : React.PropTypes.number,
 
         scrollStep    : React.PropTypes.number,
@@ -180,12 +186,12 @@ module.exports = React.createClass({
     },
 
     handleScrollLeftMax: function(event){
-        event.preventDefault()
+        stop(event)
         this.handleScrollMax(-1)
     },
 
     handleScrollRightMax: function(event){
-        event.preventDefault()
+        stop(event)
         this.handleScrollMax(1)
     },
 
@@ -244,9 +250,10 @@ module.exports = React.createClass({
     getDefaultProps: function(){
         return {
             onWindowResizeBuffer: 50,
-            scrollStep  : 5,
-            scrollSpeed : 50,
-            scrollerWidth : 5,
+            scrollStep          : 5,
+            scrollSpeed         : 50,
+            scrollerWidth       : 5,
+            scrollerProps       : {},
 
             enableScroll: false,
             hasLeftScroll: false,
@@ -350,7 +357,7 @@ module.exports = React.createClass({
                             this.state.hasLeftScroll:
                             this.state.hasRightScroll
 
-        return ScrollerFactory({
+        return ScrollerFactory(copy(this.props.scrollerProps, {
             factory      : this.props.scrollerFactory,
             active       : this.state.scrollDirection==direction && this.state.scrolling,
             onDoubleClick: onDoubleClick,
@@ -359,6 +366,6 @@ module.exports = React.createClass({
             side         : side,
             width        : this.props.scrollerWidth,
             visible      : visible
-        })
+        }))
     }
 })
