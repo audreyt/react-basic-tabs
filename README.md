@@ -59,6 +59,7 @@ The TabPanel supports the following props:
 
  * titleStyle: Object - style to be applied to tab titles
  * defaultStyle: Object - style to be applied to every tab in the tabpanel.
+ * hiddenStyle: Object - style to be applied to hidden tabs in the tabpanel. If you specify this, make sure you include display: 'none'
 
 For tab titles, the children of the TabPanel are expected to have have either a **title** property, or a **tabTitle** property (the tabTitle property has higher priority, and will be used if specified as s truthy value).
 
