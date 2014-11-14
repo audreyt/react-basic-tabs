@@ -56,7 +56,7 @@ var Scroller = React.createClass({
         var scrollerStyle = copy(SCROLLER_STYLE)
 
         props.style = copy(props.style, scrollerStyle)
-        props.style.width = props.width
+        props.style.width = props.style.width || props.width
 
         props.style[side] = 0
 
@@ -146,7 +146,7 @@ module.exports = React.createClass({
         }
 
         if (listWidth > availableWidth){
-            state.maxScrollPos = listWidth - availableWidth// + this.props.scrollerWidth
+            state.maxScrollPos = listWidth - availableWidth
             state.hasLeftScroll  = this.state.scrollPos !== 0
             state.hasRightScroll = this.state.scrollPos != state.maxScrollPos
         } else {
@@ -256,7 +256,7 @@ module.exports = React.createClass({
 
             scrollStep          : 5,
             scrollSpeed         : 50,
-            scrollerWidth       : 5,
+            scrollerWidth       : 8,
             scrollerProps       : {},
 
             enableScroll: false,
