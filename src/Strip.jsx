@@ -27,7 +27,7 @@ var LIST_STYLE = {
 var SCROLLER_STYLE = {
     top       : 0,
     position  : 'absolute',
-    display   : 'inline-block',
+    // display   : 'inline-block',
     height    : '100%',
     cursor    : 'pointer'
 }
@@ -111,9 +111,11 @@ module.exports = React.createClass({
 
     componentDidMount: function(){
         if (this.props.enableScroll){
-            this.adjustScroll()
+            setTimeout(function(){
+                this.adjustScroll()
 
-            window.addEventListener('resize', this.onResizeListener = buffer(this.onWindowResize, this.props.onWindowResizeBuffer, this))
+                window.addEventListener('resize', this.onResizeListener = buffer(this.onWindowResize, this.props.onWindowResizeBuffer, this))
+            }.bind(this), 0)
         }
     },
 
