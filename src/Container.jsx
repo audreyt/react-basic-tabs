@@ -34,7 +34,7 @@ module.exports = React.createClass({
 
         return (
             <section className={BASE_CLASS_NAME + "-container"}>
-                {this.props.children.map(this.renderItem, this)}
+                {React.Children.map(this.props.children, this.renderItem, this)}
             </section>
         )
     },
